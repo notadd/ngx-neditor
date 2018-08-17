@@ -25,7 +25,9 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/browser-md5-file/dist/browser-md5-file.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -110,6 +112,46 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "@notadd/ngx-neditor": {
+      "root": "projects/notadd/ngx-neditor",
+      "sourceRoot": "projects/notadd/ngx-neditor/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/notadd/ngx-neditor/tsconfig.lib.json",
+            "project": "projects/notadd/ngx-neditor/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/notadd/ngx-neditor/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/notadd/ngx-neditor/src/test.ts",
+            "tsConfig": "projects/notadd/ngx-neditor/tsconfig.spec.json",
+            "karmaConfig": "projects/notadd/ngx-neditor/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/notadd/ngx-neditor/tsconfig.lib.json",
+              "projects/notadd/ngx-neditor/tsconfig.spec.json"
+            ],
             "exclude": [
               "**/node_modules/**"
             ]

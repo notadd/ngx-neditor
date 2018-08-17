@@ -15,6 +15,14 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@notadd/ngx-neditor": [
+        "dist/notadd/ngx-neditor"
+      ],
+      "@notadd/ngx-neditor/*": [
+        "dist/notadd/ngx-neditor/*"
+      ]
+    }
   }
 }
