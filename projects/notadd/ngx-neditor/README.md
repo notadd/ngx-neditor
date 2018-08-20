@@ -39,13 +39,15 @@
 <ngx-neditor [(ngModel)]="content" #neditor [config]="config"></ngx-neditor>
 ```
 
+#### Neditor相关配置见[@notadd/neditor](https://github.com/notadd/neditor)
+
 ## 属性
 | 名称    | 类型           | 默认值  | 描述 |
 | ------- | ------------- | ----- | ----- |
 | config | `Object` | - | 前端配置项说明，[见官网](http://fex.baidu.com/ueditor/#start-config) |
 | loadingTip | `string` | `加载中...` | 初始化提示文本 |
 | disabled | `boolean` | `false` | 是否禁用 |
-| delay | `number` | `50` | 延迟初始化UEditor，单位：毫秒 |
-| neOnReady | `EventEmitter<UEditorComponent>` | - | 编辑器准备就绪后会触发该事件，并会传递 `NgxNeditorComponent` 当前实例对象，可用于后续操作。 |
+| delay | `number` | `50` | 延迟初始化Neditor，单位：毫秒 |
+| neOnReady | `EventEmitter<NgxNeditorComponent>` | - | 编辑器准备就绪后会触发该事件，并会传递 `NgxNeditorComponent` 当前实例对象，可用于后续操作。 |
 | neOnDestroy | `EventEmitter` | - | **编辑器组件销毁**后会触发该事件 |
 | ngModelChange | `EventEmitter<string>` | - | 编辑器内容发生改变时会触发该事件 |

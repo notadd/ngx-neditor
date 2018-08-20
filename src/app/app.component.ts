@@ -8,7 +8,6 @@ import { NgxNeditorComponent } from '../../projects/notadd/ngx-neditor/src/publi
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  @ViewChild('neditor') neditor: NgxNeditorComponent;
 
   config: any = {
     initialFrameHeight: 500

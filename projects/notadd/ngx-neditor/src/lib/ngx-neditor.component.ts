@@ -16,8 +16,8 @@ import {
   NgZone
 } from '@angular/core';
 import {NG_VALUE_ACCESSOR, ControlValueAccessor} from '@angular/forms';
-import { Subject } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import {Subject} from 'rxjs';
+import {takeUntil} from 'rxjs/operators';
 
 import {ScriptLoaderService} from './script-loader.service';
 import {NeditorConfig} from './neditor.config';
@@ -54,8 +54,10 @@ export class NgxNeditorComponent implements OnInit, AfterViewInit, OnChanges, On
 
   private _disabled = false;
 
-  private onTouched: () => void = () => {};
-  private onChange: (value: string) => void = () => {};
+  private onTouched: () => void = () => {
+  }
+  private onChange: (value: string) => void = () => {
+  }
 
   /* 取消订阅主题 */
   private ngUnsubscribe: Subject<boolean> = new Subject();
@@ -121,9 +123,13 @@ export class NgxNeditorComponent implements OnInit, AfterViewInit, OnChanges, On
   }
 
   private init() {
-    if (!window.UE) { throw new Error('neditor js文件加载失败'); }
+    if (!window.UE) {
+      throw new Error('neditor js文件加载失败');
+    }
 
-    if (this.instance) { return; }
+    if (this.instance) {
+      return;
+    }
 
     // registrer hook
     if (this.neConfig.hook && !_hook_finished) {
@@ -139,7 +145,9 @@ export class NgxNeditorComponent implements OnInit, AfterViewInit, OnChanges, On
       const ueditor = UE.getEditor(this.id, opt);
       ueditor.ready(() => {
         this.instance = ueditor;
-        if (this.value) { this.instance.setContent(this.value); }
+        if (this.value) {
+          this.instance.setContent(this.value);
+        }
         this.neOnReady.emit(this);
       });
 
@@ -156,9 +164,13 @@ export class NgxNeditorComponent implements OnInit, AfterViewInit, OnChanges, On
   private destroy() {
     if (this.instance) {
       this.zone.runOutsideAngular(() => {
-        for (const ki of this.events) {
-          this.instance.removeListener(ki, this.events[ki]);
+
+        if (Object.keys(this.events).length > 0) {
+          for (const ki of this.events) {
+            this.instance.removeListener(ki, this.events[ki]);
+          }
         }
+
         this.instance.removeListener('ready');
         this.instance.removeListener('contentChange');
         this.instance.destroy();
@@ -169,7 +181,9 @@ export class NgxNeditorComponent implements OnInit, AfterViewInit, OnChanges, On
   }
 
   private setDisabled() {
-    if (!this.instance) { return; }
+    if (!this.instance) {
+      return;
+    }
     if (this._disabled) {
       this.instance.setDisabled();
     } else {
@@ -190,7 +204,9 @@ export class NgxNeditorComponent implements OnInit, AfterViewInit, OnChanges, On
    * 添加编辑器事件
    */
   addListener(eventName: EventTypes, fn: Function): void {
-    if (this.events[eventName]) { return; }
+    if (this.events[eventName]) {
+      return;
+    }
     this.events[eventName] = fn;
     this.instance.addListener(eventName, fn);
   }
@@ -199,7 +215,9 @@ export class NgxNeditorComponent implements OnInit, AfterViewInit, OnChanges, On
    * 移除编辑器事件
    */
   removeListener(eventName: EventTypes): void {
-    if (!this.events[eventName]) { return; }
+    if (!this.events[eventName]) {
+      return;
+    }
     this.instance.removeListener(eventName, this.events[eventName]);
     delete this.events[eventName];
   }
@@ -220,6 +238,7 @@ export class NgxNeditorComponent implements OnInit, AfterViewInit, OnChanges, On
   registerOnChange(fn: (_: any) => {}): void {
     this.onChange = fn;
   }
+
   registerOnTouched(fn: () => {}): void {
     this.onTouched = fn;
   }
