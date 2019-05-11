@@ -36,7 +36,7 @@
     "ng-packagr": "3.0.6",
     "tsickle": "0.35.0",
     "tslib": "1.9.3",
-    "typescript": "2.7.2",
+    "typescript": "2.9.2",
     "@angular/cli": "6.2.9",
     "@angular/language-service": "7.2.15",
     "@types/jasmine": "2.8.16",
