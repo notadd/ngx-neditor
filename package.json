@@ -25,7 +25,7 @@
     "@angular/platform-browser-dynamic": "7.2.15",
     "@angular/router": "7.2.15",
     "browser-md5-file": "1.0.0",
-    "core-js": "2.5.7",
+    "core-js": "2.6.5",
     "rxjs": "6.2.2",
     "zone.js": "0.8.26"
   },
