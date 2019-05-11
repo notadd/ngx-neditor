@@ -39,7 +39,7 @@
     "typescript": "2.7.2",
     "@angular/cli": "6.0.8",
     "@angular/language-service": "7.2.15",
-    "@types/jasmine": "2.8.8",
+    "@types/jasmine": "2.8.16",
     "@types/jasminewd2": "2.0.3",
     "@types/node": "8.9.5",
     "angular-cli-ghpages": "0.5.3",
